@@ -11,9 +11,7 @@
         :root {
             --primary-color: #e91e63; /* গাঢ় গোলাপি */
             --secondary-color: #f06292; /* মধ্যম গোলাপি */
-            --accent-color: #ff5722; /* কমলা (এটি আগের মতোই আছে, যদি পরিবর্তন করতে চান, জানাবেন) */
-            --background-gradient-start: #f8bbd0; /* হালকা গোলাপি */
-            --background-gradient-end: #f48fb1; /* মধ্যম হালকা গোলাপি */
+            --accent-color: #ff5722; /* কমলা */
             --text-color: #333;
             --light-gray: #fce4ec; /* আরও হালকা গোলাপি */
             --border-color: #f48fb1; /* গোলাপি বর্ডার */
@@ -29,7 +27,7 @@
 
         body {
             font-family: 'Kalpurush', sans-serif;
-            background: linear-gradient(to right, var(--background-gradient-start), var(--background-gradient-end));
+            background-color: white; /* ব্যাকগ্রাউন্ড কালার সাদা করা হয়েছে */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -618,8 +616,8 @@
         // এখন Persistence.NONE সেট করার কারণে, পেজ রিফ্রেশ বা নতুন লোড হলে ইউজার লগইন করা থাকবে না।
         auth.onAuthStateChanged(user => {
             if (user) {
-                // ইউজার লগইন করা থাকলে (যদি পূর্বে signInWithEmailAndPassword কল করা হয়ে থাকে)
-                // এবং পেজ রিফ্রেশ না হয়ে থাকে, তবে এখানে প্রবেশ করবে।
+                // ইউজার লগইন করা থাকলে (যদি পূর্বে signInWithEmailAndPassword কল করা হয়ে থাকে)
+                // এবং পেজ রিফ্রেশ না হয়ে থাকে, তবে এখানে প্রবেশ করবে।
                 profileName.textContent = user.displayName || 'নাম নেই';
                 profileEmail.textContent = user.email;
                 if (currentLoginTime) {
@@ -633,7 +631,7 @@
                 }
                 showPortal();
             } else {
-                // ইউজার লগইন করা না থাকলে বা persistence NONE হওয়ার কারণে সেশন শেষ হলে
+                // ইউজার লগইন করা না থাকলে বা persistence NONE হওয়ার কারণে সেশন শেষ হলে
                 // লগইন কন্টেইনার দেখানো হবে।
                 loginContainer.classList.remove('hide');
                 portalContent.style.display = 'none';
